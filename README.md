@@ -58,7 +58,7 @@ Inspired from the awesome work of:
 
 ## Author
 
-Alexandru Rosianu
+Alexandru Rosianu (https://github.com/aluxian/dotfiles-fish)
 
 ## License
 
