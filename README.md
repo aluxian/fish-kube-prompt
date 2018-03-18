@@ -11,12 +11,13 @@ mkdir -p ~/.config/fish/functions/
 cd ~/.config/fish/
 git clone https://github.com/aluxian/fish-kube-prompt
 ln -s ../fish-kube-prompt/__kube_prompt.fish functions/
+ln -s ../fish-kube-prompt/kube_ps.fish functions/
 ```
 
 Then create or edit `~/.config/fish/functions/fish_prompt.fish` to include
 kube prompt:
 
-```
+```fish
 function fish_prompt
   echo -s (set_color blue) (__kube_prompt) (set_color $fish_color_cwd) " " (prompt_pwd) (set_color normal) "> "
 end
