@@ -46,6 +46,9 @@ kube_ps off
 `kube_ps` is a simple function that just updates a global variable
 `__kube_ps_enabled`.
 
+Many choices have been hard-coded (e.g. colors, delimiters). If there's anything
+you'd like to customize, please add an env var and send a PR.
+
 ## Credits
 
 Inspired from the awesome work of:
