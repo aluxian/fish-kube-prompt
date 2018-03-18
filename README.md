@@ -15,7 +15,7 @@ ln -s ../fish-kube-prompt/kube_ps.fish functions/
 ```
 
 Then create or edit `~/.config/fish/functions/fish_prompt.fish` to include
-kube prompt:
+`__kube_prompt`:
 
 ```fish
 function fish_prompt
