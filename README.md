@@ -2,7 +2,7 @@
 
 ⎈ kubectl context/namespace in your fish shell prompt
 
-![preview][preview.png]
+![preview](preview.png)
 
 ## Install
 
