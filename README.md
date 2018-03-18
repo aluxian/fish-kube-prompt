@@ -43,7 +43,7 @@ kube_ps on
 kube_ps off
 ```
 
-`kube_ps` is a simple function that just updates a global variable
+`kube_ps` is a simple function that just updates a universal variable
 `__kube_ps_enabled`.
 
 > Many choices have been hard-coded (e.g. colors, delimiters). If there's anything
