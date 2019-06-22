@@ -2,11 +2,14 @@
 # https://github.com/jonmosco/kube-ps1
 # https://github.com/Ladicle/fish-kubectl-prompt
 
+set -g color_ctx (set_color $KUBE_PROMPT_COLOR_CTX)
+set -g color_ns (set_color $KUBE_PROMPT_COLOR_NS)
+
 function __kube_ps_update_cache
   function __kube_ps_cache_context
     set -l ctx (kubectl config current-context 2>/dev/null)
     if /bin/test $status -eq 0
-      set -g __kube_ps_context "$ctx"
+      set -g __kube_ps_context "$color_ctx$ctx"
     else
       set -g __kube_ps_context "n/a"
     end
@@ -15,7 +18,7 @@ function __kube_ps_update_cache
   function __kube_ps_cache_namespace
     set -l ns (kubectl config view --minify -o 'jsonpath={..namespace}' 2>/dev/null)
     if /bin/test -n "$ns"
-      set -g __kube_ps_namespace "$ns"
+      set -g __kube_ps_namespace "$color_ns$ns"
     else
       set -g __kube_ps_namespace "default"
     end
@@ -55,3 +58,4 @@ function __kube_prompt
   __kube_ps_update_cache
   echo -n -s " (⎈ $__kube_ps_context|$__kube_ps_namespace)"
 end
+
