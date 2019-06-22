@@ -43,6 +43,13 @@ kube_ps on
 kube_ps off
 ```
 
+You can set custom color for a context/namespace by adding env vars like this:
+
+```fish
+set -Ux KUBE_PROMPT_COLOR_CTX red
+set -Ux KUBE_PROMPT_COLOR_NS blue
+```
+
 `kube_ps` is a simple function that just updates a universal variable
 `__kube_ps_enabled`.
 
