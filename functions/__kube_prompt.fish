@@ -5,7 +5,7 @@
 function __kube_ps_update_cache
   function __kube_ps_cache_context
     set -l ctx (kubectl config current-context 2>/dev/null)
-    if /bin/test $status -eq 0
+    if test $status -eq 0
       set -g __kube_ps_context "$ctx"
     else
       set -g __kube_ps_context "n/a"
@@ -14,7 +14,7 @@ function __kube_ps_update_cache
 
   function __kube_ps_cache_namespace
     set -l ns (kubectl config view --minify -o 'jsonpath={..namespace}' 2>/dev/null)
-    if /bin/test -n "$ns"
+    if test -n "$ns"
       set -g __kube_ps_namespace "$ns"
     else
       set -g __kube_ps_namespace "default"
@@ -22,11 +22,11 @@ function __kube_ps_update_cache
   end
 
   set -l kubeconfig "$KUBECONFIG"
-  if /bin/test -z "$kubeconfig"
+  if test -z "$kubeconfig"
     set kubeconfig "$HOME/.kube/config"
   end
 
-  if /bin/test "$kubeconfig" != "$__kube_ps_kubeconfig"
+  if test "$kubeconfig" != "$__kube_ps_kubeconfig"
     __kube_ps_cache_context
     __kube_ps_cache_namespace
     set -g __kube_ps_kubeconfig "$kubeconfig"
@@ -35,8 +35,8 @@ function __kube_ps_update_cache
   end
 
   for conf in (string split ':' "$kubeconfig")
-    if /bin/test -r "$conf"
-      if /bin/test -z "$__kube_ps_timestamp"; or /bin/test (/usr/bin/stat -f '%m' "$conf") -gt "$__kube_ps_timestamp"
+    if test -r "$conf"
+      if test -z "$__kube_ps_timestamp"; or test (/usr/bin/stat -f '%m' "$conf") -gt "$__kube_ps_timestamp"
         __kube_ps_cache_context
         __kube_ps_cache_namespace
         set -g __kube_ps_kubeconfig "$kubeconfig"
@@ -48,7 +48,7 @@ function __kube_ps_update_cache
 end
 
 function __kube_prompt
-  if /bin/test -z "$__kube_ps_enabled"; or /bin/test $__kube_ps_enabled -ne 1
+  if test -z "$__kube_ps_enabled"; or test $__kube_ps_enabled -ne 1
     return
   end
 
