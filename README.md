@@ -10,8 +10,8 @@
 mkdir -p ~/.config/fish/functions/
 cd ~/.config/fish/
 git clone https://github.com/aluxian/fish-kube-prompt
-ln -s ../fish-kube-prompt/__kube_prompt.fish functions/
-ln -s ../fish-kube-prompt/kube_ps.fish functions/
+ln -s ../fish-kube-prompt/functions/__kube_prompt.fish functions/
+ln -s ../fish-kube-prompt/functions/kube_ps.fish functions/
 ```
 
 Then create or edit `~/.config/fish/functions/fish_prompt.fish` to include
