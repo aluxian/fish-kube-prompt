@@ -21,6 +21,13 @@ function __kube_ps_update_cache
     end
   end
 
+  function __stat_mtime
+    #-- cross-platform workaround; POSIX didn't specify stat(1) and so
+    #-- its interface is incompatibly different on Mac OS and Linux.
+    #-- see https://unix.stackexchange.com/q/561927/3097
+    python -c "print(__import__('os').stat(__import__('sys').argv[1]).st_mtime)" $argv
+  end
+
   set -l kubeconfig "$KUBECONFIG"
   if test -z "$kubeconfig"
     set kubeconfig "$HOME/.kube/config"
@@ -36,7 +43,7 @@ function __kube_ps_update_cache
 
   for conf in (string split ':' "$kubeconfig")
     if test -r "$conf"
-      if test -z "$__kube_ps_timestamp"; or test (/usr/bin/stat -f '%Y' "$conf") -gt "$__kube_ps_timestamp"
+      if test -z "$__kube_ps_timestamp"; or test (__stat_mtime "$conf") -gt "$__kube_ps_timestamp"
         __kube_ps_cache_context
         __kube_ps_cache_namespace
         set -g __kube_ps_kubeconfig "$kubeconfig"
