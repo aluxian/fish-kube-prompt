@@ -8,4 +8,12 @@ function kube_ps -a toggle
     set -U __kube_ps_enabled 0
     return
   end
+
+  if test "$__kube_ps_enabled" = 1
+    set -U __kube_ps_enabled 0
+    return
+  end
+
+  set -U __kube_ps_enabled 1
+
 end
