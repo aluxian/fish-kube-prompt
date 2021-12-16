@@ -23,6 +23,13 @@ function fish_prompt
 end
 ```
 
+Finally, enable the prompt by executing this once (the setting will be preserved
+across restarts of the shell.)
+
+```fish
+kube_fs
+```
+
 ## Speed
 
 Running the `kubectl` commands to get the context and namespace every time
@@ -38,6 +45,11 @@ This was not my idea, I took it from `jonmosco/kube-ps1`.
 
 You can toggle the prompt on or off like this:
 
+```fish
+kube_ps
+```
+
+You can enable or disable the prompt like this:
 ```fish
 kube_ps on
 kube_ps off
